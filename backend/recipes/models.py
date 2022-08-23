@@ -75,7 +75,7 @@ class Recipe(models.Model):
         verbose_name='Ингредиенты'
     )
     tags = models.ManyToManyField(
-        'Tag',
+        Tag,
         verbose_name='Теги'
     )
     cooking_time = models.IntegerField(
@@ -116,6 +116,12 @@ class RecipeIngredient(models.Model):
         ordering = ['-id']
         verbose_name = 'Ингредиент рецепта'
         verbose_name_plural = 'Ингредиенты рецептов'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['recipe', 'ingredient'],
+                name='unique_ingredient_in_recipe'
+            )
+        ]
 
     def __str__(self):
         return '{} - {}'.format(self.ingredient, self.amount)

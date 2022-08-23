@@ -14,7 +14,7 @@ router.register('tags', TagViewSet, basename='tags')
 router.register('recipes', RecipeViewSet, basename='recipes')
 
 urlpatterns = [
-    path('users/subscriptions/', SubscriptionListView.as_view()),
+    path('users/subscriptions/', SubscriptionListView.as_view(), name='subscriptions'),
     path('auth/token/login/', TokenCreateView.as_view(), name='login'),
     path('auth/token/logout/', TokenDestroyView.as_view(), name='logout'),
     path('', include(router.urls))
