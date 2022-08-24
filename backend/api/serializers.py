@@ -5,7 +5,7 @@ from rest_framework.serializers import (IntegerField,  # isort:skip
                                         PrimaryKeyRelatedField,
                                         ReadOnlyField,
                                         SerializerMethodField,
-                                        ValidationError,)
+                                        ValidationError)
 
 from recipes.models import (Favorite, Ingredient, Recipe,  # isort:skip
                             RecipeIngredient, ShoppingCart, Tag)
