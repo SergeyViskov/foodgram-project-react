@@ -13,10 +13,10 @@ from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from .filters import IngredientSearchFilter, RecipeFilter
 from .pagination import LimitPagination
 from .permissions import IsAuthor, IsReadOnly
-from .serializers import (CustomUserSerializer, IngredientSerializer,
-                          RecipeMinifiedSerializer, RecipeSerializer,
-                          SubscriptionSerializer, TagSerializer,
-                          CreateRecipeSerializer)
+from .serializers import (CustomUserSerializer, CreateRecipeSerializer,
+                          IngredientSerializer, RecipeMinifiedSerializer,
+                          RecipeSerializer, SubscriptionSerializer, 
+                          TagSerializer)
 from recipes.models import (Favorite, Ingredient, Recipe,  # isort:skip
                             RecipeIngredient, ShoppingCart, Tag)
 from users.models import Subscription, User  # isort:skip
@@ -109,7 +109,7 @@ class RecipeViewSet(ModelViewSet):
         elif request.method == 'DELETE' and instance.exists():
             instance.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response(status=status.HTTP_400_BAD_REQUEST)    
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=True, methods=['post', 'delete'],
             permission_classes=[IsAuthenticated])
