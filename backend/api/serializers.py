@@ -116,23 +116,23 @@ class CreateRecipeSerializer(ModelSerializer):
         ]
 
     def validate(self, data):
-        ingredients = self.initial_data.get('ingredients')
+        ingredients = data.get('ingredients')
         if not ingredients:
             raise ValidationError(
                 'В рецепте должен быть хотя бы один ингредиент!'
             )
-        list = []
+        ingredients_list = []
         for ingredient in ingredients:
             amount = ingredient['amount']
             if int(amount) < 1:
                 raise ValidationError({
                    'amount': 'Количество ингредиента должно быть больше 0!'
                 })
-            if ingredient['id'] in list:
+            if ingredient['id'] in ingredients_list:
                 raise ValidationError({
                    'ingredient': 'Ингредиенты должны быть уникальными!'
                 })
-            list.append(ingredient['id'])
+            ingredients_list.append(ingredient['id'])
         return data
 
     def validate_tags(self, tags):
@@ -195,14 +195,12 @@ class CreateRecipeSerializer(ModelSerializer):
         RecipeIngredient.objects.filter(recipe=instance).delete()
         ingredients = validated_data.pop('ingredients')
         tags = validated_data.pop('tags')
-        self.create_ingredients(ingredients, instance)
-        instance.tags.set(tags)
-        instance.name = validated_data.pop('name')
-        instance.text = validated_data.pop('text')
-        if validated_data.get('image'):
-            instance.image = validated_data.pop('image')
-        instance.cooking_time = validated_data.pop('cooking_time')
-        instance.save()
+        instance = super().update(instance, validated_data)
+        if ingredients:
+            instance.ingredients.clear()
+            self.create_ingredients(ingredients, instance)
+        if tags:
+            instance.tags.set(tags)
         return instance
 
     def to_representation(self, instance):
