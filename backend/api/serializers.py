@@ -1,6 +1,6 @@
 from djoser.serializers import UserCreateSerializer, UserSerializer
 from drf_extra_fields.fields import Base64ImageField
-from rest_framework.serializers import (IntegerField, ModelSerializer,
+from rest_framework.serializers import (IntegerField, ModelSerializer,  # isort:skip
                                         PrimaryKeyRelatedField, ReadOnlyField,
                                         SerializerMethodField,
                                         ValidationError,)
@@ -125,9 +125,9 @@ class CreateRecipeSerializer(ModelSerializer):
         for ingredient in ingredients:
             amount = ingredient['amount']
             if int(amount) < 1:
-                raise ValidationError({
-                   'amount': 'Количество ингредиента должно быть больше 0!'
-                })
+                raise ValidationError(
+                    {'amount': 'Количество ингредиента должно быть больше 0!'}
+                )
             if ingredient['id'] in ingredients_list:
                 raise ValidationError({
                    'ingredient': 'Ингредиенты должны быть уникальными!'
