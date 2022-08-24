@@ -8,7 +8,7 @@ from rest_framework.serializers import (IntegerField, ReadOnlyField,  # isort:sk
 
 from recipes.models import (Favorite, Ingredient, Recipe,  # isort:skip
                             RecipeIngredient, ShoppingCart, Tag)
-from users.models import Subscription, User
+from users.models import Subscription, User  # isort:skip
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):

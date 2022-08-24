@@ -13,10 +13,11 @@ from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from .filters import IngredientSearchFilter, RecipeFilter
 from .pagination import LimitPagination
 from .permissions import IsAuthor, IsReadOnly
-from .serializers import (CustomUserSerializer, CreateRecipeSerializer,
+from .serializers import (CreateRecipeSerializer, CustomUserSerializer,
                           IngredientSerializer, RecipeMinifiedSerializer,
-                          RecipeSerializer, SubscriptionSerializer, 
+                          RecipeSerializer, SubscriptionSerializer,
                           TagSerializer)
+
 from recipes.models import (Favorite, Ingredient, Recipe,  # isort:skip
                             RecipeIngredient, ShoppingCart, Tag)
 from users.models import Subscription, User  # isort:skip
