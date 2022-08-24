@@ -6,7 +6,7 @@ from djoser.views import UserViewSet
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
@@ -17,9 +17,9 @@ from .serializers import (CustomUserSerializer, IngredientSerializer,
                           RecipeMinifiedSerializer, RecipeSerializer,
                           SubscriptionSerializer, TagSerializer,
                           CreateRecipeSerializer)
-from recipes.models import (Favorite, Ingredient, Recipe,
+from recipes.models import (Favorite, Ingredient, Recipe,  # isort:skip
                             RecipeIngredient, ShoppingCart, Tag)
-from users.models import Subscription, User
+from users.models import Subscription, User  # isort:skip
 
 
 class CustomUserViewSet(UserViewSet):
