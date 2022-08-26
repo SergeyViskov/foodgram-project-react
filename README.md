@@ -1,33 +1,33 @@
 # `Foodgram` - сайт 'Продуктовый помощник'
 
-![foodgram-project-react workflow](https://github.com/SergeyViskov/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg?)
+![foodgram-project-react Workflow Status](https://github.com/SergeyViskov/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg?)
 
 ### О проекте:
  Онлайн-сервис и API для него. На этом сервисе пользователи могут публиковать рецепты, подписываться на публикации других пользователей, добавлять понравившиеся рецепты в список «Избранное», а перед походом в магазин скачивать сводный список продуктов, необходимых для приготовления одного или нескольких выбранных блюд.
  
 ### Технологии:
-```
-- Python
-- Django
-- Django REST Framework
-- PostgreSQL
-- Nginx
-- Gunicorn
-- Docker
-```
+
+* Python
+* Django
+* Django REST Framework
+* PostgreSQL
+* Nginx
+* Gunicorn
+* Docker
+
 ### Как запустить проект:
 
 * Выполните вход на свой удаленный сервер
 
 * Установите docker на сервер:
-```
-sudo apt install docker.io 
-```
+    ```
+    sudo apt install docker.io 
+    ```
 * Установите docker-compose на сервер:
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+    ```
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    ```
 * Cоздайте .env файл и впишите:
     ```
     DB_ENGINE=<django.db.backends.postgresql>
@@ -58,7 +58,7 @@ sudo chmod +x /usr/local/bin/docker-compose
     TELEGRAM_TO=<ID чата, в который придет сообщение>
     TELEGRAM_TOKEN=<токен вашего бота>
     ```
-*Workflow состоит из трёх шагов:
+* Workflow состоит из трёх шагов:
     ```
      - Проверка кода на соответствие PEP8
      - Сборка и публикация образа бекенда на DockerHub.
@@ -66,36 +66,39 @@ sudo chmod +x /usr/local/bin/docker-compose
      - Отправка уведомления в телеграм-чат.  
     ```
 * Запуск контейнера:
-```
-docker-compose up -d --build
-```
+    ```
+    docker-compose up -d --build
+    ```
 * После успешной сборки на сервере выполните команды:
+
 - Соберите статические файлы:
-```
-sudo docker-compose exec backend python manage.py collectstatic --no-input
-```
+    ```
+    sudo docker-compose exec backend python manage.py collectstatic --no-input
+    ```
 - Примените миграции:
-```
-sudo docker-compose exec backend python manage.py makemigrations --noinput
+    ```
+    sudo docker-compose exec backend python manage.py makemigrations --noinput
 
-sudo docker-compose exec backend python manage.py migrate --noinput
-
-sudo docker-compose exec backend python manage.py createsuperuser
-```
+    sudo docker-compose exec backend python manage.py migrate --noinput
+    ```
+- Создайте суперпользователя:
+    ```
+    sudo docker-compose exec backend python manage.py createsuperuser
+    ```
 - Загрузите БД:
-```
-sudo docker-compose exec backend python manage.py load_json_data
-```
+    ```
+    sudo docker-compose exec backend python manage.py load_json_data
+    ```
 или
-```
-sudo docker-compose exec backend python manage.py load_csv_data
-```
+    ```
+    sudo docker-compose exec backend python manage.py load_csv_data
+    ```
 
-* Докуметация API:
+### Докуметация API:
 
 http://51.250.100.101/api/docs/redoc.html
 
-* Проект:
+### Проект:
 
 http://51.250.100.101
 
