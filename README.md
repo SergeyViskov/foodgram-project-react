@@ -88,28 +88,27 @@
 - Загрузите БД:
     ```
     sudo docker-compose exec backend python manage.py load_json_data
-    ```
-или
-    ```
+    или
     sudo docker-compose exec backend python manage.py load_csv_data
     ```
 
 ### Докуметация API:
 
-http://51.250.100.101/api/docs/redoc.html
+    http://51.250.100.101/api/docs/redoc.html
 
 ### Проект:
 
-http://51.250.100.101
+    http://51.250.100.101
 
-* Суперпользователь:
+### Суперпользователь:
 
-`name: admin@admin.ru`
+    `name: admin`
 
-`password: admin`
+    `password: admin`
 
 ### Об авторе:
+    ```
+    Висков Сергей Николаевич
 
-Висков Сергей Николаевич
-
-Ученик Яндекс-практикума, когорта №9 +
+    Ученик Яндекс-практикума, когорта №9 +
+    ```
