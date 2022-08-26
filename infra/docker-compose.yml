@@ -27,9 +27,8 @@ services:
       - ./.env
 
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: cocosi383/foodgram-frontend:latest
+    restart: always
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
