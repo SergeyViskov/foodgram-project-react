@@ -1,7 +1,5 @@
 # `Foodgram` - сайт 'Продуктовый помощник'
 
-![foodgram-project-react Workflow Status](https://github.com/SergeyViskov/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg?)
-
 ### О проекте:
  Онлайн-сервис и API для него. На этом сервисе пользователи могут публиковать рецепты, подписываться на публикации других пользователей, добавлять понравившиеся рецепты в список «Избранное», а перед походом в магазин скачивать сводный список продуктов, необходимых для приготовления одного или нескольких выбранных блюд.
  
@@ -26,6 +24,8 @@
 * Установите docker-compose на сервер:
     ```
     sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    ```
+    ```
     sudo chmod +x /usr/local/bin/docker-compose
     ```
 * Cоздайте .env файл и впишите:
@@ -78,7 +78,8 @@
 - Примените миграции:
     ```
     sudo docker-compose exec backend python manage.py makemigrations --noinput
-
+    ```
+    ```
     sudo docker-compose exec backend python manage.py migrate --noinput
     ```
 - Создайте суперпользователя:
@@ -88,7 +89,9 @@
 - Загрузите БД:
     ```
     sudo docker-compose exec backend python manage.py load_json_data
+    ```
     или
+    ```
     sudo docker-compose exec backend python manage.py load_csv_data
     ```
 
@@ -109,6 +112,3 @@ http://51.250.100.101
 ### Об авторе:
     
 Висков Сергей Николаевич
-
-Ученик Яндекс-практикума, когорта №9 +
-    
